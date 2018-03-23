@@ -3,8 +3,10 @@
  */
 import java.awt.*;
 import javax.swing.*;
+//This class handles the GUI interface
 
 public class UserInterface extends  JFrame{
+    //Private variables
     private JPanel mainPanel;
     private JPanel chatsPanel;
     private JPanel chatPanel;
@@ -31,60 +33,60 @@ public class UserInterface extends  JFrame{
     private JScrollPane contactsScroll;
     private String groupChat = "     Group Chat     ";
 
-    UserInterface(){
+    UserInterface(){ //Constructor
         //JPanels
-        mainPanel = new JPanel(new BorderLayout());
-        chatsPanel = new JPanel(new BorderLayout());
-        chatPanel = new JPanel(new BorderLayout());
+        mainPanel = new JPanel(new BorderLayout()); //Main Panel
+        chatsPanel = new JPanel(new BorderLayout()); //Messages Panel
+        chatPanel = new JPanel(new BorderLayout()); //Chat Panel
         chatPanel.setBackground(Color.CYAN);
-        chatBottomArea = new JPanel(new FlowLayout());
+        chatBottomArea = new JPanel(new FlowLayout()); //Sender Panel
         chatBottomArea.setBackground(Color.CYAN);
         contactsActionPanel = new JPanel();
         contactsActionPanel.setLayout(new BoxLayout(contactsActionPanel, BoxLayout.Y_AXIS));
 
         //JLabels
-        appName = new JLabel("Chat App");
+        appName = new JLabel("Chat App"); //App name
         appName.setHorizontalAlignment(SwingConstants.CENTER);
-        userName = new JLabel("Group Chat");
+        userName = new JLabel("Group Chat"); //Group chat
         userName.setHorizontalAlignment(SwingConstants.CENTER);
-        chatsLabel = new JLabel("Contacts");
+        chatsLabel = new JLabel("Contacts"); //Contacts
         chatsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         //Buttons
         sendButton = new JButton();
-        ImageIcon icon = new ImageIcon("Icons/send.png");
+        ImageIcon icon = new ImageIcon("Icons/send.png"); //Get Icon
         Image img = icon.getImage() ;
-        Image newimg = img.getScaledInstance( 20, 15,  java.awt.Image.SCALE_SMOOTH ) ;
+        Image newimg = img.getScaledInstance( 20, 15,  java.awt.Image.SCALE_SMOOTH ) ; //Set icon size
         icon = new ImageIcon( newimg );
-        sendButton.setIcon(icon);
+        sendButton.setIcon(icon); //Set Icon
         sendButton.setBackground(Color.GREEN);
 
         attachmentButton = new JButton();
-        icon = new ImageIcon("Icons/attach.png");
+        icon = new ImageIcon("Icons/attach.png"); //Get Icon
         img = icon.getImage() ;
-        newimg = img.getScaledInstance( 20, 15,  java.awt.Image.SCALE_SMOOTH ) ;
+        newimg = img.getScaledInstance( 20, 15,  java.awt.Image.SCALE_SMOOTH ) ; //Set icon size
         icon = new ImageIcon( newimg );
-        attachmentButton.setIcon(icon);
+        attachmentButton.setIcon(icon); //Set Icon
         attachmentButton.setBackground(Color.CYAN);
 
         imageButton = new JButton();
-        icon = new ImageIcon("Icons/image.png");
+        icon = new ImageIcon("Icons/image.png"); //GEt Icon
         img = icon.getImage() ;
-        newimg = img.getScaledInstance( 20, 15,  java.awt.Image.SCALE_SMOOTH ) ;
+        newimg = img.getScaledInstance( 20, 15,  java.awt.Image.SCALE_SMOOTH ) ; //Set icon size
         icon = new ImageIcon( newimg );
-        imageButton.setIcon(icon);
+        imageButton.setIcon(icon); //set icon
         imageButton.setBackground(Color.CYAN);
 
         //JTextFields
-        message = new JTextField("", 25);
+        message = new JTextField("", 25); //Message area
         message.setFocusable(true);
         //JList
-        properMessagesList = new DefaultListModel<>();
+        properMessagesList = new DefaultListModel<>(); //Messages
         messages = new JList<>(properMessagesList);
         messages.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         messages.setSelectionModel(new DisabledItemSelectionModel());
 
-        properContactsList = new DefaultListModel<>();
+        properContactsList = new DefaultListModel<>(); //Contacts
         properContactsList.addElement(groupChat);
         contacts = new JList<>(properContactsList);
         contacts.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -104,7 +106,7 @@ public class UserInterface extends  JFrame{
     }
 
     void setupUI(){
-        this.setSize(600, 400);
+        this.setSize(600, 400); //Frame size
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
         Dimension dimension = toolkit.getScreenSize();
@@ -112,11 +114,11 @@ public class UserInterface extends  JFrame{
         int xPos = (dimension.width/2) - (this.getWidth()/2);
         int yPos = (dimension.height/2) - (this.getHeight()/2);
 
-        this.setLocation(xPos, yPos);
+        this.setLocation(xPos, yPos); //Frame location
 
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exit condition
 
         this.setTitle("Chat App");
 
@@ -125,9 +127,9 @@ public class UserInterface extends  JFrame{
 
     void displayApp(){
         this.setVisible(true);
-    }
+    } //Set the frame visible
 
-    private JPanel chatPanelMethod(){
+    private JPanel chatPanelMethod(){ //Add objects to the frame
         chatPanel.add(userName, BorderLayout.NORTH);
         chatPanel.add(messagesScroll, BorderLayout.CENTER);
         chatBottomArea.add(message);
